@@ -1,0 +1,85 @@
+﻿@using System.Globalization;
+@model WebMoney.Utilities.Utils.ViewModel
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<style>
+	.row {
+		margin: 15px 0;
+	}
+
+	input {
+		max-width: 100%;
+	}
+
+	table {
+		min-width: 100%;
+	}
+
+	th:last-child, td:last-child {
+		text-align: right;
+	}
+
+	.br {
+		padding: 15px;
+		text-align: center;
+		color: white;
+	}
+</style>
+<div class="row">
+	<div class="col-md-12">
+		<div class="card textwhite bg-secondary text-white shadow">
+			<div class="card-body br">
+				<a class="m-0" style="color:white" href="#ModalTAdd" data-toggle="modal" role="dialog" aria-labelledby="myModalLabel2">Додати транзакцію</a>
+			</div>
+		</div>
+
+		@*<div class="br">Додати <a href="#ModalTAdd" data-toggle="modal" role="dialog" aria-labelledby="myModalLabel2">одну транзакцію</a></div>*@
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Дата</th>
+					<th>Сума</th>
+					<th>Опис</th>
+					<th>Рахунок</th>
+					<th> </th>
+				</tr>
+			</thead>
+			<tbody>
+				@{
+					DateTime day = new DateTime();
+					DateTime s = new DateTime();
+					foreach (var item1 in Model.Transaction) {
+						foreach (var item2 in Model.Account) {
+							if (item1.Account_Id == item2.Id) {
+								day = item1.Datetime;
+								if (day.ToString("dd MMMM yyyy") != s.ToString("dd MMMM yyyy")) {
+									<tr><td colspan="5" style="text-align: left; font-weight: bold;">@day.ToString("dddd, dd MMMM yyyy")</td></tr>
+								}
+								<tr>
+									<td>@item1.Datetime.ToString("H:mm")</td>
+									<td style="text-align:right">@item1.Amount.ToString("F", CultureInfo.InvariantCulture)</td>
+									<td>@item1.Channel</td>
+									<td>@item2.Name</td>
+									<td>
+										<a href="#DelModalT" class="card-text" data-toggle="modal">Видалити</a>
+									</td>
+								</tr>
+							}
+							s = day;
+						}
+					}
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="modal fade" id="ModalTAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			@Html.Partial("~/Views/Transaction/AddTransaction.cshtml", new WebMoney.Utilities.Models.Transactions())
+		</div>
+	</div>
+</div>

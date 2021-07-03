@@ -1,0 +1,114 @@
+﻿@model WebMoney.Utilities.Utils.ViewModel
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<style>
+	.tb tr:nth-child(even) {
+		text-align: center;
+	}
+
+	.col-form-label {
+		padding-top: 0;
+	}
+
+	.form-check-input {
+		margin-left: 0;
+	}
+
+	.fcl {
+		margin-left: 15px;
+	}
+
+	.help {
+		font-size: 20px;
+		text-decoration-color: mediumblue;
+		text-decoration-line: underline;
+		margin-top: 10px;
+	}
+</style>
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="list-group" id="list-tab" role="tablist">
+			<a class="list-group-item list-group-item-action" id="list-cash-list" data-toggle="list" href="#list-cash" role="tab" aria-controls="cash">Добавить наличку</a>
+			<a class="list-group-item list-group-item-action" id="list-account-list" data-toggle="list" href="#list-account" role="tab" aria-controls="account">Добавить картку</a>
+			<a class="list-group-item list-group-item-action" id="list-contribution-list" data-toggle="list" href="#list-contribution" role="tab" aria-controls="contribution">Добавить депозит</a>
+			<a class="list-group-item list-group-item-action" id="list-credit-list" data-toggle="list" href="#list-credit" role="tab" aria-controls="credit">Добавить кредит</a>
+		</div>
+		<br />
+		<table class="table" id="list-table" role="tablist">
+			<thead>
+				<tr>
+					<th colspan="2">Карты и счета</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tbody>
+				@{
+					foreach (var item1 in Model.Account) {
+						if (item1.Cash.Count != 0) {
+							<tr>
+								<td colspan="2">Наличка</td>
+							</tr>
+							foreach (var item2 in Model.Cash) {
+								<tr>
+									<td style="color:gray"><a href="~/Account/AccountsCash/@item1.Id">@item1.Name</a></td>
+									<td style="color:gray; text-align:center">@item1.Balance</td>
+								</tr>
+							}
+						}
+						else {
+							<tr>
+								<td colspan="2">Счета</td>
+							</tr>
+							<tr>
+								<td style="color:gray"><a href="~/Account/AccountsBankCard/@item1.Id">@item1.Name</a></td>
+								<td style="color: gray; text-align: center">@item1.Balance</td>
+							</tr>
+						}
+					}
+				}
+
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-8">
+		<div class="row">
+			<div class="tab-content col" id="nav-tabContent">
+				<div class="tab-pane fade" id="list-cash" role="tabpanel" aria-labelledby="list-cash-list">
+					<h4>Добавление счёта</h4>
+				</div>
+
+				<div class="tab-pane fade" id="list-account" role="tabpanel" aria-labelledby="list-account-list">
+				</div>
+
+				<div class="tab-pane fade" id="list-contribution" role="tabpanel" aria-labelledby="list-contribution-list">
+				</div>
+
+				<div class="tab-pane fade" id="list-credit" role="tabpanel" aria-labelledby="list-credit-list">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('#list-tab a').on('click', function (e) {
+		e.preventDefault()
+		$(this).tab('show')
+	})
+
+	$('#list-tab a[href="#cash"]').tab('show')
+	$('#list-tab a[href="#account"]').tab('show')
+	$('#list-tab a[href="#contribution"]').tab('show')
+	$('#list-tab a[href="#credit"]').tab('show')
+
+	$('#list-table a').on('click', function (e) {
+		e.preventDefault()
+		$(this).tab('show')
+	})
+
+	$('#list-table a[href="#card"]').tab('show')
+</script>

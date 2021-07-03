@@ -57,8 +57,8 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -72,8 +72,8 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -83,11 +83,11 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -167,7 +167,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,6 +231,7 @@
     <Content Include="Graphic\img\appdelivery.png" />
     <Content Include="Graphic\img\apple.png" />
     <Content Include="Graphic\img\asana.png" />
+    <Content Include="Graphic\img\atm.png" />
     <Content Include="Graphic\img\backpack.png" />
     <Content Include="Graphic\img\bag.png" />
     <Content Include="Graphic\img\bagage.png" />
@@ -289,8 +293,10 @@
     <Content Include="Graphic\img\cup %285%29.png" />
     <Content Include="Graphic\img\cup %286%29.png" />
     <Content Include="Graphic\img\delivery %282%29.png" />
+    <Content Include="Graphic\img\delivery.png" />
     <Content Include="Graphic\img\design.png" />
     <Content Include="Graphic\img\dessert.png" />
+    <Content Include="Graphic\img\directions.png" />
     <Content Include="Graphic\img\discount %282%29.png" />
     <Content Include="Graphic\img\discount.png" />
     <Content Include="Graphic\img\dish.png" />
@@ -321,18 +327,22 @@
     <Content Include="Graphic\img\hairdryer.png" />
     <Content Include="Graphic\img\hat.png" />
     <Content Include="Graphic\img\hoсkey.png" />
+    <Content Include="Graphic\img\itm.png" />
     <Content Include="Graphic\img\key %284%29.png" />
     <Content Include="Graphic\img\key.png" />
     <Content Include="Graphic\img\khinkali.png" />
     <Content Include="Graphic\img\kid %283%29.png" />
     <Content Include="Graphic\img\kids.png" />
+    <Content Include="Graphic\img\Layer 18.png" />
     <Content Include="Graphic\img\list %284%29.png" />
     <Content Include="Graphic\img\luggage.png" />
     <Content Include="Graphic\img\martialarts.png" />
     <Content Include="Graphic\img\medicine.png" />
     <Content Include="Graphic\img\microphone %284%29.png" />
     <Content Include="Graphic\img\microphone.png" />
+    <Content Include="Graphic\img\mobile money.png" />
     <Content Include="Graphic\img\money.png" />
+    <Content Include="Graphic\img\moneybag.png" />
     <Content Include="Graphic\img\moneybox.png" />
     <Content Include="Graphic\img\moneygrow.png" />
     <Content Include="Graphic\img\mountains.png" />
@@ -369,6 +379,7 @@
     <Content Include="Graphic\img\scary.png" />
     <Content Include="Graphic\img\scissors.png" />
     <Content Include="Graphic\img\seafood.png" />
+    <Content Include="Graphic\img\selling.png" />
     <Content Include="Graphic\img\shave.png" />
     <Content Include="Graphic\img\ship.png" />
     <Content Include="Graphic\img\skates.png" />
@@ -400,7 +411,9 @@
     <Content Include="Graphic\img\towel.png" />
     <Content Include="Graphic\img\toy.png" />
     <Content Include="Graphic\img\toys.png" />
+    <Content Include="Graphic\img\transfer %282%29.png" />
     <Content Include="Graphic\img\transfer %283%29.png" />
+    <Content Include="Graphic\img\transfer.png" />
     <Content Include="Graphic\img\tree %282%29.png" />
     <Content Include="Graphic\img\tree.png" />
     <Content Include="Graphic\img\trees.png" />
@@ -415,52 +428,6 @@
     <Content Include="Graphic\img\washingmachine.png" />
     <Content Include="Graphic\img\weight %283%29.png" />
     <Content Include="Graphic\img\weight.png" />
-    <Content Include="Graphic\login-form\css\main.css" />
-    <Content Include="Graphic\login-form\css\util.css" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\css\font-awesome.css" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
-    <Content Include="Graphic\login-form\fonts\Linearicons-Free-v1.0.0\icon-font.min.css" />
-    <Content Include="Graphic\login-form\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.svg" />
-    <Content Include="Graphic\login-form\fonts\montserrat\OFL.txt" />
-    <Content Include="Graphic\login-form\images\bg-01.jpg" />
-    <Content Include="Graphic\login-form\images\icons\favicon.ico" />
-    <Content Include="Graphic\login-form\images\icons\icon-google.png" />
-    <Content Include="Graphic\login-form\images\icons\map-marker.png" />
-    <Content Include="Graphic\login-form\images\icons\symbol-01.png" />
-    <Content Include="Graphic\login-form\index.html" />
-    <Content Include="Graphic\login-form\js\main.js" />
-    <Content Include="Graphic\login-form\vendor\animate\animate.css" />
-    <Content Include="Graphic\login-form\vendor\animsition\css\animsition.css" />
-    <Content Include="Graphic\login-form\vendor\animsition\css\animsition.min.css" />
-    <Content Include="Graphic\login-form\vendor\animsition\js\animsition.js" />
-    <Content Include="Graphic\login-form\vendor\animsition\js\animsition.min.js" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\css\bootstrap-grid.css" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\css\bootstrap-grid.min.css" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\css\bootstrap-reboot.css" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\css\bootstrap-reboot.min.css" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\css\bootstrap.css" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\css\bootstrap.min.css" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\js\bootstrap.js" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\js\popper.js" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\js\popper.min.js" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\js\tooltip.js" />
-    <Content Include="Graphic\login-form\vendor\countdowntime\countdowntime.js" />
-    <Content Include="Graphic\login-form\vendor\css-hamburgers\hamburgers.css" />
-    <Content Include="Graphic\login-form\vendor\css-hamburgers\hamburgers.min.css" />
-    <Content Include="Graphic\login-form\vendor\daterangepicker\daterangepicker.css" />
-    <Content Include="Graphic\login-form\vendor\daterangepicker\daterangepicker.js" />
-    <Content Include="Graphic\login-form\vendor\daterangepicker\moment.js" />
-    <Content Include="Graphic\login-form\vendor\daterangepicker\moment.min.js" />
-    <Content Include="Graphic\login-form\vendor\jquery\jquery-3.2.1.min.js" />
-    <Content Include="Graphic\login-form\vendor\perfect-scrollbar\perfect-scrollbar.css" />
-    <Content Include="Graphic\login-form\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
-    <Content Include="Graphic\login-form\vendor\select2\select2.css" />
-    <Content Include="Graphic\login-form\vendor\select2\select2.js" />
-    <Content Include="Graphic\login-form\vendor\select2\select2.min.css" />
-    <Content Include="Graphic\login-form\vendor\select2\select2.min.js" />
     <Content Include="Graphic\plus.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -468,85 +435,28 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\animated.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\core.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\fixed-width.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\font-awesome.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\icons.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\larger.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\list.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\mixins.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\path.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\screen-reader.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\stacked.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\less\variables.less" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_animated.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_core.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_icons.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_larger.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_list.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_path.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
-    <Content Include="Graphic\login-form\fonts\font-awesome-4.7.0\scss\_variables.scss" />
-    <Content Include="Graphic\login-form\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.eot" />
-    <Content Include="Graphic\login-form\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.ttf" />
-    <Content Include="Graphic\login-form\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff" />
-    <Content Include="Graphic\login-form\fonts\Linearicons-Free-v1.0.0\WebFont\Linearicons-Free.woff2" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-Black.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-BlackItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-Bold.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-BoldItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-ExtraBold.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-ExtraBoldItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-ExtraLight.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-Italic.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-Light.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-LightItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-Medium.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-MediumItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-Regular.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-SemiBold.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-SemiBoldItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-Thin.ttf" />
-    <Content Include="Graphic\login-form\fonts\montserrat\Montserrat-ThinItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-Black.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-BlackItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-Bold.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-BoldItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-ExtraBold.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-ExtraLight.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-Italic.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-Light.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-LightItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-Medium.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-MediumItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-Regular.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-SemiBold.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-Thin.ttf" />
-    <Content Include="Graphic\login-form\fonts\poppins\Poppins-ThinItalic.ttf" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\css\bootstrap-grid.css.map" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\css\bootstrap-reboot.css.map" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\css\bootstrap.css.map" />
-    <Content Include="Graphic\login-form\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -569,38 +479,19 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Analytics.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Transaction\Index.cshtml" />
+    <Content Include="Views\Transaction\AddTransaction.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Home\Registration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.rtl.min.css.map" />
-    <Content Include="Content\bootstrap.rtl.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
-    <Content Include="Content\bootstrap-utilities.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.esm.min.js.map" />
-    <Content Include="Scripts\bootstrap.esm.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
   </ItemGroup>

@@ -3,8 +3,14 @@ using System.Data.Entity;
 using WebMoney.Utilities.Models;
 
 namespace WebMoney.Utilities.DAL {
+	//DropCreateDatabaseAlways
+	//CreateDatabaseIfNotExists
+	//DropCreateDatabaseIfModelChanges
 	internal class MoneyInitializer : DropCreateDatabaseAlways<MoneyContext> {
 		protected override void Seed(MoneyContext context) {
+			Currency currency1 = new Currency {
+				First_СС = "грн."
+			};
 			User user1 = new User {
 				Id = 1,
 				Username = "Example",
@@ -14,149 +20,227 @@ namespace WebMoney.Utilities.DAL {
 
 			Accounts account1 = new Accounts {
 				Id = 1,
-				Name = "Наличные",
-				Balance = 10,
-				User_Id = 1
-			};
-			Accounts account2 = new Accounts {
-				Id = 2,
 				Name = "Карта",
 				Balance = 0,
-				User_Id = 1
+				Status = true,
+				Currency = currency1,
+				User = user1
+			}; 
+			Accounts account2 = new Accounts {
+				Id = 2,
+				Name = "Наличные",
+				Balance = 10,
+				Currency = currency1,
+				User = user1,
+				Status = true
+			};
+
+			BankCards bankcard = new BankCards {
+				Id = 1,
+				Accounts = account1
 			};
 			Cash cash1 = new Cash {
 				Id = 1,
-				Account_Id = 1
-			};
-			BankCards bankcard = new BankCards {
-				Id = 2,
-				Account_Id = 2
+				Accounts = account2
 			};
 
 			Design design1 = new Design {
 				Id = 1,
-				Name = "Транспорт",
-				Picture = "~/Graphic/img/bus.png",
-				Color = "#f8d6a3"
+				Name = "Зарплата",
+				Picture = "atm.png",
+				Color = "#a6d6af"
 			};
+
 			Design design2 = new Design {
 				Id = 2,
-				Name = "Продукты",
-				Picture = "~/Graphic/img/cart.png",
-				Color = "#a1cff7"
+				Name = "Путешествия",
+				Picture = "bus.png",
+				Color = "#f8d6a3"
 			};
 			Design design3 = new Design {
 				Id = 3,
-				Name = "Покупки",
-				Picture = "~/Graphic/img/e-commerce.png",
-				Color = "#bcaba4"
+				Name = "Продукты",
+				Picture = "cart.png",
+				Color = "#a1cff7"
 			};
 			Design design4 = new Design {
 				Id = 4,
-				Name = "Здоровье",
-				Picture = "~/Graphic/img/consultation.png",
-				Color = "#a6d6af"
+				Name = "Сбережения",
+				Picture = "moneybox.png",
+				Color = "#bcaba4"
 			};
 			Design design5 = new Design {
 				Id = 5,
-				Name = "Досуг",
-				Picture = "~/Graphic/img/video (2).png",
+				Name = "Переводы",
+				Picture = "transfer.png",
 				Color = "#f8a3c0"
 			};
 
 
 			Categories category1 = new Categories {
 				Id = 1,
-				Design_Id = 1
+				Design = design1
 			};
 			Categories category2 = new Categories {
 				Id = 2,
-				Design_Id = 2
+				Design = design2
 			};
 			Categories category3 = new Categories {
 				Id = 3,
-				Design_Id = 3
+				Design = design3
 			};
 			Categories category4 = new Categories {
 				Id = 4,
-				Design_Id = 4
+				Design = design4
 			};
 			Categories category5 = new Categories {
 				Id = 5,
-				Design_Id = 5
+				Design = design5
 			};
 
 			Transactions transaction1 = new Transactions {
 				Id = 1,
-				Datetime = new DateTime(2021, 6, 28, 4, 9, 0),
-				Amount = 3.02,
-				Movement = "Перевод в свою «Копилку» 26**58. Округление остатка по карте до 10 UAH.",
-				RemainingAmount = 0.00,
-				Account_Id = 2,
-				Category_Id = 5
-			};
-			Transactions transaction2 = new Transactions {
-				Id = 2,
 				Datetime = new DateTime(2021, 6, 27, 15, 38, 0),
 				Amount = 131.79,
-				Movement = "Железнодорожные билеты: Filiya GIOC AT, ID платежа 1688976324",
+				Movement = false,
 				RemainingAmount = 3.02,
-				Account_Id = 2,
-				Category_Id = 1
+				Channel = "Железнодорожные билеты: Filiya GIOC AT, ID платежа 1688976324",
+				Accounts = account1,
+				Categories = category2,
+				Currency = currency1
 			};
-			Transactions transaction3 = new Transactions {
-				Id = 3,
+			Transactions transaction2 = new Transactions {
+				Id = 1,
 				Datetime = new DateTime(2021, 6, 27, 15, 37, 0),
 				Amount = 34.81,
-				Movement = "Перевод от DARIA LIAKHOVSKA",
+				Movement = true,
 				RemainingAmount = 134.81,
-				Account_Id = 2,
-				Category_Id = 5
+				Channel = "Перевод от DARIA LIAKHOVSKA",
+				Accounts = account1,
+				Categories = category5,
+				Currency = currency1
+			};
+			Transactions transaction3 = new Transactions {
+				Id = 1,
+				Datetime = new DateTime(2021, 6, 18, 12, 33, 0),
+				Amount = 21.00,
+				Movement = false,
+				RemainingAmount = 100.15,
+				Channel = "Продукты: АШАН 015, Київ, вул. Горького, 176",
+				Accounts = account1,
+				Categories = category3,
+				Currency = currency1
 			};
 			Transactions transaction4 = new Transactions {
-				Id = 4,
-				Datetime = new DateTime(2021, 6, 26, 21, 54, 0),
-				Amount = 100.00,
-				Movement = "Перевод с карты ПриватБанка через приложение Приват24. Отправитель: Біда Наталія Анатоліївна",
-				RemainingAmount = 100.00,
-				Account_Id = 2,
-				Category_Id = 5
+				Id = 1,
+				Datetime = new DateTime(2021, 6, 18, 10, 51, 0),
+				Amount = 25.32,
+				Movement = false,
+				RemainingAmount = 123.68,
+				Channel = "Продукты: VELYKA KYSHENYA, Kyiv",
+				Accounts = account1,
+				Categories = category3,
+				Currency = currency1
 			};
 			Transactions transaction5 = new Transactions {
-				Id = 5,
-				Datetime = new DateTime(2021, 6, 23, 16, 51, 0),
-				Amount = 500.00,
-				Movement = "Перевод со своей карты",
-				RemainingAmount = 0.00,
-				Account_Id = 2,
-				Category_Id = 5
+				Id = 1,
+				Datetime = new DateTime(2021, 6, 18, 9, 15, 0),
+				Amount = 10.00,
+				Movement = false,
+				RemainingAmount = 150.00,
+				Channel = "Перевод на карту ПриватБанка через приложение Приват24. Получатель: Пакало Валерія Анатоліївна",
+				Accounts = account1,
+				Categories = category5,
+				Currency = currency1
 			};
 			Transactions transaction6 = new Transactions {
-				Id = 6,
-				Datetime = new DateTime(2021, 6, 23, 16, 49, 0),
-				Amount = 500.00,
-				Movement = "Перевод с карты ПриватБанка через приложение Приват24. Отправитель: Біда Наталія Анатоліївна",
-				RemainingAmount = 500.00,
-				Account_Id = 2,
-				Category_Id = 5
+				Id = 1,
+				Datetime = new DateTime(2021, 6, 17, 5, 43, 0),
+				Amount = 4.32,
+				Movement = false,
+				RemainingAmount = 160.00,
+				Channel = "Перевод в свою «Копилку» 26**58. Округление остатка по карте до 10 UAH.",
+				Accounts = account1,
+				Categories = category4,
+				Currency = currency1
 			};
 			Transactions transaction7 = new Transactions {
-				Id = 7,
-				Datetime = new DateTime(2021, 6, 18, 12, 33, 0),
-				Amount = 25.35,
-				Movement = "Продукты: АШАН 015, Київ, вул. Горького, 176",
-				RemainingAmount = 0.00,
-				Account_Id = 2,
-				Category_Id = 2
+				Id = 1,
+				Datetime = new DateTime(2021, 6, 16, 22, 46, 0),
+				Amount = 8.41,
+				Movement = false,
+				RemainingAmount = 136.18,
+				Channel = "Перевод на свою «Копилку» 26*58. 10% от расходов.",
+				Accounts = account1,
+				Categories = category4,
+				Currency = currency1
 			};
 			Transactions transaction8 = new Transactions {
-				Id = 8,
-				Datetime = new DateTime(2021, 6, 16, 23, 59, 0),
-				Amount = 28.14,
-				Movement = "ВОЗВРАТ ТОВАРА",
-				RemainingAmount = 25.35,
-				Account_Id = 2,
-				Category_Id = 3
+				Id = 1,
+				Datetime = new DateTime(2021, 6, 16, 22, 43, 0),
+				Amount = 84.06,
+				Movement = false,
+				RemainingAmount = 144.59,
+				Channel = "Продукты: Велика Кишеня, м.Київ, ш.Залiзничне, буд.57",
+				Accounts = account1,
+				Categories = category3,
+				Currency = currency1
+			};
+			Transactions transaction9 = new Transactions {
+				Id = 1,
+				Datetime = new DateTime(2021, 6, 11, 23, 4, 0),
+				Amount = 8.00,
+				Movement = false,
+				RemainingAmount = 11.20,
+				Channel = "Услуги туризма и транспортных перевозок: KYIVSKYI METROPOLITEN, KYIV",
+				Accounts = account1,
+				Categories = category2,
+				Currency = currency1
+			};
+
+			Transactions transaction10 = new Transactions {
+				Id = 11,
+				Datetime = new DateTime(2021, 6, 8, 15, 36, 0),
+				Amount = 8.00,
+				Movement = false,
+				RemainingAmount = 20.48,
+				Channel = "Услуги туризма и транспортных перевозок: KYIVSKYI METROPOLITEN, KYIV",
+				Accounts = account1,
+				Categories = category2,
+				Currency = currency1
+			};
+			Transactions transaction11 = new Transactions {
+				Id = 12,
+				Datetime = new DateTime(2021, 6, 8, 15, 1, 0),
+				Amount = 5.52,
+				Movement = false,
+				RemainingAmount = 28.48,
+				Channel = "Перевод на свою «Копилку» 26*58. 10% от расходов.",
+				Accounts = account1,
+				Categories = category4,
+				Currency = currency1
+			};
+			Transactions transaction12 = new Transactions {
+				Id = 13,
+				Datetime = new DateTime(2021, 6, 8, 14, 58, 0),
+				Amount = 55.20,
+				Movement = false,
+				RemainingAmount = 34.00,
+				Channel = "Продукты: MAGAZYN 0485, KYYIV",
+				Accounts = account1,
+				Categories = category3,
+				Currency = currency1
+			};
+			Transactions transaction13 = new Transactions {
+				Id = 14,
+				Datetime = new DateTime(2021, 6, 29, 20, 20, 0),
+				Amount = 8.00,
+				Movement = false,
+				RemainingAmount = 10.00,
+				Channel = "Услуги туризма и транспортных перевозок: KYIVSKYI METROPOLITEN, KYIV",
+				Accounts = account2,
+				Categories = category2,
+				Currency = currency1
 			};
 
 			context.User.AddRange(new[] { user1 });
@@ -164,7 +248,8 @@ namespace WebMoney.Utilities.DAL {
 			context.Cash.AddRange(new[] { cash1 });
 			context.Design.AddRange(new[] { design1, design2, design3, design4, design5 });
 			context.Categories.AddRange(new[] { category1, category2, category3, category4, category5 });
-			context.Transactions.AddRange(new[] { transaction1, transaction2, transaction3, transaction4, transaction5, transaction6, transaction7, transaction8 });
+			context.Transactions.AddRange(new[] { transaction1, transaction2, transaction3, transaction4, transaction5, transaction6, 
+				transaction7, transaction8, transaction9, transaction10, transaction11, transaction12, transaction13 });
 
 			base.Seed(context);
 		}

@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebMoney.Utilities.Models {
 	public partial class BankCards : IEntity {
-		[DatabaseGenerated(DatabaseGeneratedOption.None)]
+		//[DatabaseGenerated(DatabaseGeneratedOption.None)]
 		public int Id { get; set; }
-		[Required]
+		//[Required]
 		public string Merchant { get; set; }
 		public string CardNumber { get; set; }
 		public string CreditLimit { get; set; }
-
+		[ForeignKey("Accounts")]
 		public int Account_Id { get; set; }
 
 		public virtual Accounts Accounts { get; set; }
