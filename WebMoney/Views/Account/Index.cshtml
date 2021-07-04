@@ -78,16 +78,19 @@
 		<div class="row">
 			<div class="tab-content col" id="nav-tabContent">
 				<div class="tab-pane fade" id="list-cash" role="tabpanel" aria-labelledby="list-cash-list">
-					<h4>Добавление счёта</h4>
+					@Html.Partial("~/Views/Account/AddCash.cshtml", new WebMoney.Utilities.Models.Cash())
 				</div>
 
 				<div class="tab-pane fade" id="list-account" role="tabpanel" aria-labelledby="list-account-list">
+					@Html.Partial("~/Views/Account/AddBankCard.cshtml", new WebMoney.Utilities.Models.BankCards())
 				</div>
 
 				<div class="tab-pane fade" id="list-contribution" role="tabpanel" aria-labelledby="list-contribution-list">
+					@Html.Partial("~/Views/Account/AddContribution.cshtml", new WebMoney.Utilities.Models.InterestAccounts())
 				</div>
 
 				<div class="tab-pane fade" id="list-credit" role="tabpanel" aria-labelledby="list-credit-list">
+					@Html.Partial("~/Views/Account/AddCredit.cshtml", new WebMoney.Utilities.Models.InterestAccounts())
 				</div>
 			</div>
 		</div>

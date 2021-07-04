@@ -31,17 +31,6 @@ namespace WebMoney.Controllers {
 			return View(model);
 		}
 
-		public ActionResult ViewIndex() {
-			ViewModel model = new ViewModel {
-				Account = db.Account.GetList(),
-				Category = db.Category.GetList(),
-				Design = db.Design.GetList(),
-				Transaction = db.Transaction.GetList().OrderByDescending(d => d.Datetime),
-				User = db.User.GetList()
-			};
-			return View(model);
-		}
-
 		public ActionResult CategoryCRUD() {
 			ViewModel model = new ViewModel {
 				Account = db.Account.GetList(),
@@ -55,15 +44,25 @@ namespace WebMoney.Controllers {
 
 		[HttpGet]
 		public ActionResult AddCategories() {
-			Categories category = new Categories();
-			return View(category);
+			Design design = new Design();
+			return View(design);
 		}
 
 		[HttpPost]
-		public ActionResult AddCategories(Categories category) {
-			category.Id = db.Category.GetList().Count + 1;
+		public ActionResult AddCategories(Design design) {
+			design.Id = db.Design.GetList().Count + 1;
+
+			db.Design.Create(design);
+
+			Categories categories = new Categories() {
+				Id = db.Category.GetList().Count + 1,
+				Design = design
+			};
+
 			if (ModelState.IsValid) {
-				db.Category.Create(category);
+				db.Design.Create(design);
+				db.Category.Create(categories);
+
 				db.Save();
 			}
 
@@ -81,15 +80,15 @@ namespace WebMoney.Controllers {
 		public ActionResult EditCategories(int Id = -1) {
 			if (Id == -1) return RedirectToAction("Index");
 			else {
-				Categories category = db.Category.GetById(Id);
-				return View(category);
+				Design design = db.Design.GetById(Id);
+				return View(design);
 			}
 		}
 
 		[HttpPost]
-		public ActionResult EditCategories(Categories category) {
+		public ActionResult EditCategories(Design design) {
 			if (ModelState.IsValid) {
-				db.Category.Update(category);
+				db.Design.Update(design);
 				db.Save();
 			}
 
@@ -105,6 +104,7 @@ namespace WebMoney.Controllers {
 
 		[HttpDelete]
 		public void DeleteCategories(int Id) {
+			db.Design.Delete(Id);
 			db.Category.Delete(Id);
 			db.Save();
 		}

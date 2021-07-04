@@ -57,5 +57,16 @@ namespace WebMoney.Controllers {
 		public ActionResult Exit() {
 			return View("Index");
 		}
+
+		public ActionResult Analytics() {
+			ViewModel model = new ViewModel {
+				Account = db.Account.GetList(),
+				Category = db.Category.GetList(),
+				Design = db.Design.GetList(),
+				Transaction = db.Transaction.GetList().OrderByDescending(d => d.Datetime),
+				User = db.User.GetList()
+			};
+			return View(model);
+		}
 	}
 }

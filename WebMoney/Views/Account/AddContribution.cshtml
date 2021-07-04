@@ -1,0 +1,46 @@
+﻿<h2>Депозит</h2>
+
+<form>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="Name">Название</label></div>
+		<div class="col"><input type="text" class="form-control" name="Name" /></div>
+	</div>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="Currency">Валюта</label></div>
+		<div class="col">
+			<select class="form-select" name="Currency">
+				<option value="грн.">Украинская гривна</option>
+			</select>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="OpeningDate">Дата открытия</label></div>
+		<div class="col"><input class="form-control" type="date" name="OpeningDate" /></div>
+	</div>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="Amount">Сумма</label></div>
+		<div class="col"><input type="text" class="form-control" name="Amount" /></div>
+	</div>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="Term">Срок вклада</label></div>
+		<div class="col">
+			<input type="text" class="form-control" name="Term" /><select class="form-select" name="Term">
+				<option value="">дн.</option>
+				<option value="" selected>мес.</option>
+				<option value="">год.</option>
+			</select>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="InterestRate">Процентная ставка</label></div>
+		<div class="col"><input type="text" class="form-control" name="InterestRate" /></div>
+	</div>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="CardNumber">Номер карты</label></div>
+		<div class="col"><input type="text" class="form-control" name="CardNumber" /></div>
+	</div>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="Status">Включить в общий счёт</label></div>
+		<div class="col"><input type="checkbox" name="Status" value="true" /></div>
+	</div>
+</form>

@@ -24,35 +24,22 @@ namespace WebMoney.Controllers {
 			return View(model);
 		}
 
-		public ActionResult AccountsCash(int Id) {
-			Accounts account = db.Account.GetById(Id);
-			ViewBag.i = Id;
-			model = new ViewModel {
-				Account = db.Account.GetList(),
-				Cash = db.Cash.GetList(),
-				InterestAccount = db.InterestAccount.GetList(),
-				Transaction = db.Transaction.GetList().OrderByDescending(d => d.Datetime),
-				User = db.User.GetList()
-			};
-
-			return View(account);
-		}
-
+		/*----------------------CASH----------------------*/
 		[HttpGet]
-		public ActionResult AddAccount() {
+		public ActionResult AddCash() {
 			Accounts account = new Accounts();
 			return View(account);
 		}
 
 		[HttpPost]
-		public ActionResult AddAccount(Accounts account) {
+		public ActionResult AddCash(Accounts account) {
 			account.Id = db.Account.GetList().Count + 1;
 
 			db.Account.Create(account);
 
 			Cash cash = new Cash() {
 				Id = db.Cash.GetList().Count + 1,
-				Account_Id = account.Id
+				Accounts = account
 			};
 
 			db.Cash.Create(cash);
@@ -68,16 +55,97 @@ namespace WebMoney.Controllers {
 			return View("Index", model);
 		}
 
-		public ActionResult BankAccounts(int Id) {
-			return View(db.Account.GetById(Id));
+		/*----------------------BANKCARD----------------------*/
+		[HttpGet]
+		public ActionResult AddBankCard() {
+			Accounts account = new Accounts();
+			return View(account);
 		}
 
-		public ActionResult AccountsContribution() {
-			return View(model);
+		[HttpPost]
+		public ActionResult AddBankCard(Accounts account) {
+			account.Id = db.Account.GetList().Count + 1;
+
+			db.Account.Create(account);
+
+			Cash cash = new Cash() {
+				Id = db.Cash.GetList().Count + 1,
+				Accounts = account
+			};
+
+			db.Cash.Create(cash);
+
+			db.Save();
+
+			ViewModel model = new ViewModel {
+				Account = db.Account.GetList(),
+				Cash = db.Cash.GetList(),
+				InterestAccount = db.InterestAccount.GetList(),
+				User = db.User.GetList()
+			};
+			return View("Index", model);
 		}
 
-		public ActionResult AccountsCredit() {
-			return View(model);
+		/*----------------------CONTRIBUTION----------------------*/
+		[HttpGet]
+		public ActionResult AddContribution() {
+			Accounts account = new Accounts();
+			return View(account);
+		}
+
+		[HttpPost]
+		public ActionResult AddContribution(Accounts account) {
+			account.Id = db.Account.GetList().Count + 1;
+
+			db.Account.Create(account);
+
+			Cash cash = new Cash() {
+				Id = db.Cash.GetList().Count + 1,
+				Accounts = account
+			};
+
+			db.Cash.Create(cash);
+
+			db.Save();
+
+			ViewModel model = new ViewModel {
+				Account = db.Account.GetList(),
+				Cash = db.Cash.GetList(),
+				InterestAccount = db.InterestAccount.GetList(),
+				User = db.User.GetList()
+			};
+			return View("Index", model);
+		}
+
+		/*----------------------CREDIT----------------------*/
+		[HttpGet]
+		public ActionResult AddCredit() {
+			Accounts account = new Accounts();
+			return View(account);
+		}
+
+		[HttpPost]
+		public ActionResult AddCredit(Accounts account) {
+			account.Id = db.Account.GetList().Count + 1;
+
+			db.Account.Create(account);
+
+			Cash cash = new Cash() {
+				Id = db.Cash.GetList().Count + 1,
+				Accounts = account
+			};
+
+			db.Cash.Create(cash);
+
+			db.Save();
+
+			ViewModel model = new ViewModel {
+				Account = db.Account.GetList(),
+				Cash = db.Cash.GetList(),
+				InterestAccount = db.InterestAccount.GetList(),
+				User = db.User.GetList()
+			};
+			return View("Index", model);
 		}
 	}
 }

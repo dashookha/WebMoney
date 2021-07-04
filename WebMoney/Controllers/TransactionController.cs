@@ -51,6 +51,33 @@ namespace WebMoney.Controllers {
 			return View("Index", model);
 		}
 
+		[HttpGet]
+		public ActionResult EditTransaction(int Id = -1) {
+			if (Id == -1) return RedirectToAction("Index");
+			else {
+				Transactions transactions = db.Transaction.GetById(Id);
+				return View(transactions);
+			}
+		}
+
+		[HttpPost]
+		public ActionResult EditTransaction(Transactions transactions) {
+			if (ModelState.IsValid) {
+				db.Transaction.Update(transactions);
+				db.Save();
+			}
+
+			ViewModel model = new ViewModel {
+				Account = db.Account.GetList(),
+				Category = db.Category.GetList(),
+				Design = db.Design.GetList(),
+				Transaction = db.Transaction.GetList().OrderByDescending(d => d.Datetime),
+				User = db.User.GetList()
+			};
+			return View("Index", model);
+		}
+
+
 		[HttpDelete]
 		public ActionResult DeleteT(int Id) {
 			db.Transaction.Delete(Id);

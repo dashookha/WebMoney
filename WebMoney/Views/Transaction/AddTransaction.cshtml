@@ -1,12 +1,22 @@
 ﻿@model WebMoney.Utilities.Models.Transactions
+@{ WebMoney.Utilities.DAL.MoneyContext money = new WebMoney.Utilities.DAL.MoneyContext(); }
+
+<style>
+	.col {
+		margin-bottom: 10px;
+	}
+
+	input, select {
+		max-width: 100%;
+	}
+</style>
 
 <div class="modal-header">
-	<select class="form-select-lg" style="border-style: none;">
-		<optgroup label="Расход">
-			<option value="12" selected="">Доход</option>
-		</optgroup>
+	<select class="form-select-lg" style="border-style: none;" name="Movement">
+		<option value="false" selected="">Расход</option>
+		<option value="true" selected="">Доход</option>
 	</select>
-	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть">
 	</button>
 </div>
 <div class="modal-body">
@@ -14,39 +24,40 @@
 		<div class="row">
 			<div class="col">
 				<label class="form-label d-xxl-flex justify-content-xxl-center">Счет</label>
-				<select class="form-select d-xxl-flex justify-content-xxl-center align-items-xxl-center" style="text-align: center;width: 220;">
-					<option value="12" selected="">Карта</option>
-					<optgroup label="Наличные">
-					</optgroup>
+				@{ List<WebMoney.Utilities.Models.Accounts> accounts = money.Accounts.ToList();}
+				<select class="form-select d-xxl-flex justify-content-xxl-center align-items-xxl-center" style="text-align: center;" name="Accounts">
+					@foreach (var item1 in accounts) {
+						<option value="@item1.Id">@item1.Name</option>
+					}
 				</select>
 			</div>
 			<div class="col">
-				<label class="form-label">Label</label>
-				<select class="form-select">
-					<optgroup label="This is a group">
-						<option value="12" selected="">This is item 1</option>
-						<option value="13">This is item 2</option>
-						<option value="14">This is item 3</option>
-					</optgroup>
+				<label class="form-label">Категории</label>
+				@{ List<WebMoney.Utilities.Models.Design> design = money.Design.ToList();}
+				<select class="form-select" name="Design">
+					@foreach (var item1 in design) {
+						<option value="@item1.Id">@item1.Name</option>
+					}
 				</select>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col">
-				<input class="form-control" type="date">
+				@{ DateTime date = DateTime.Now; }
+				<input class="form-control" type="date" name="Datetime" value="@date.ToString("yyyy-MM-dd")">
 			</div>
 		</div>
 	</form>
 	<div class="row">
 		<div class="col">
-			<label class="form-label">Label</label>
-			<input type="text">
+			<label class="form-label">Сумма</label>
+			<input class="form-control" type="text" name="Amount">
 		</div>
 	</div>
 	<div class="row">
 		<div class="col">
-			<label class="form-label">Label</label>
-			<textarea></textarea>
+			<label class="form-label">Описание транзакции</label>
+			<textarea class="form-control" name="Channel"></textarea>
 		</div>
 	</div>
 </div>

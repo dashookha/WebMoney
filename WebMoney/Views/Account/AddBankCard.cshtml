@@ -1,0 +1,45 @@
+﻿<style>
+	.col {
+		margin-bottom: 10px;
+	}
+
+	input, select {
+		max-width: 100%;
+	}
+</style>
+<h2>Карта</h2>
+
+<form>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="Name">Название</label></div>
+		<div class="col"><input type="text" class="form-control" name="Name" /></div>
+	</div>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="Currency">Валюта</label></div>
+		<div class="col">
+			<select class="form-select" name="Currency">
+				<option value="грн.">Украинская гривна</option>
+			</select>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="Balance">Текущий баланс</label></div>
+		<div class="col"><input type="text" class="form-control" name="Balance" /></div>
+	</div>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="CreditLimit">Кредитный лимит</label></div>
+		<div class="col"><input type="text" class="form-control" name="CreditLimit" /></div>
+	</div>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="CardNumber">Номер карты</label></div>
+		<div class="col"><input type="text" class="form-control" name="CardNumber" /></div>
+	</div>
+	<div class="row">
+		<div class="col"><label class="col-form-label" for="Status">Включить в общий счёт</label></div>
+		<div class="col"><input type="checkbox" name="Status" value="true" /></div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-light" type="button" data-bs-dismiss="modal">Закрыть</button>
+		<button class="btn btn-primary" type="button">Сохранить</button>
+	</div>
+</form>

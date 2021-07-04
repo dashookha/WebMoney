@@ -128,20 +128,20 @@
 				}
 				<tr>
 					<td>Баланс</td>
-					<td>@b грн.</td>
-					<td><a href="~/Views/Accounts/Index.cshtml">Настроить</a></td>
+					<td style="text-align: right">@b грн.</td>
+					<td><a href="~/Views/Account/Index.cshtml">Настроить</a></td>
 				</tr>
 				@{
 					foreach (var item1 in Model.Account) {
 						<tr>
 							<td>@item1.Name</td>
-							<td>@item1.Balance грн.</td>
-							<td><a href="~/Financial/Transactions/@item1.Id">@item1.Name</a></td>
+							<td style="text-align: right">@item1.Balance грн.</td>
+							<td><a href="~/Views/Account/Index.cshtml">@item1.Name</a></td>
 						</tr>
 					}
 				}
 				<tr>
-					<td colspan="3" style="text-align:left">@Html.ActionLink("Редактировать категории", "CRUD", "Category")</td>
+					<td colspan="3" style="text-align:left">@Html.ActionLink("Редактировать категории", "CategoryCRUD", "Category")</td>
 				</tr>
 			</table>
 		</div>

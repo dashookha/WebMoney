@@ -1,0 +1,67 @@
+﻿@model WebMoney.Utilities.Models.Transactions
+@{ WebMoney.Utilities.DAL.MoneyContext money = new WebMoney.Utilities.DAL.MoneyContext(); }
+
+<style>
+	.col {
+		margin-bottom: 10px;
+	}
+
+	input, select {
+		max-width: 100%;
+	}
+</style>
+
+<div class="modal-header">
+	<select class="form-select-lg" style="border-style: none;" name="@Model.Movement">
+		<option value="false" selected="">Расход</option>
+		<option value="true" selected="">Доход</option>
+	</select>
+	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть">
+	</button>
+</div>
+<div class="modal-body">
+	<form>
+		<div class="row">
+			<div class="col">
+				<label class="form-label d-xxl-flex justify-content-xxl-center">Счет</label>
+				@{ List<WebMoney.Utilities.Models.Accounts> accounts = money.Accounts.ToList();}
+				<select class="form-select d-xxl-flex justify-content-xxl-center align-items-xxl-center" style="text-align: center;" name="Accounts">
+					@foreach (var item1 in accounts) {
+						<option value="@item1.Id">@item1.Name</option>
+					}
+				</select>
+			</div>
+			<div class="col">
+				<label class="form-label">Категории</label>
+				@{ List<WebMoney.Utilities.Models.Design> design = money.Design.ToList();}
+				<select class="form-select" name="Design">
+					@foreach (var item1 in design) {
+						<option value="@item1.Id">@item1.Name</option>
+					}
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				@{ DateTime date = DateTime.Now; }
+				<input class="form-control" type="date" name="@Model.Datetime" value="@date.ToString("yyyy-MM-dd")">
+			</div>
+		</div>
+	</form>
+	<div class="row">
+		<div class="col">
+			<label class="form-label">Сумма</label>
+			<input class="form-control" type="text" name="@Model.Amount">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<label class="form-label">Описание транзакции</label>
+			<textarea class="form-control" name="@Model.Channel"></textarea>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-light" type="button" data-bs-dismiss="modal">Закрыть</button>
+	<button class="btn btn-primary" type="button">Сохранить</button>
+</div>
